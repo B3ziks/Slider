@@ -1,0 +1,304 @@
+  * { box-sizing: border-box; }
+  body { font-family: Poppins; margin: 0; padding: 0; }
+  .slider-container {
+  position: relative;
+       margin-bottom: 50px; 
+}
+.slider-container.first-slider {
+  margin-top: 15px; 
+}
+
+   }
+   h2{font-size: 20px}
+.slider {
+    position: relative;
+    padding: 0; /* Remove padding that could affect the tile placement */
+    margin: 0 auto; /* Center the slider if necessary */
+  }
+
+  .slide-track {
+    display: flex;
+    transition: transform 0.3s ease;
+    margin-left: 0; /* Ensure the track starts from the very beginning */
+  }
+  /* Ensure .tile class has no left or right margin or padding that could affect width */
+  .tile {
+    box-sizing: border-box; /* This ensures padding is included in the width */
+    padding: 10px; /* Adjust padding as necessary */
+    margin: 0; /* Remove margins between tiles */
+    flex: 0 0 auto; /* Prevent tiles from growing or shrinking */
+    position: relative;
+     max-height:400px;
+  }
+.tile a {
+    color: black; 
+    text-decoration: none; 
+}
+.tile a:visited {
+    color: black; 
+   }
+.tile a:hover {
+    text-decoration: none; 
+   color:#43759b;
+   font-weight:normal;
+}
+   .tile h2{
+      margin-top:10px;
+      color:black;
+   }
+ 
+  .tile img {
+    display: block; /* Makes the image a block-level element */
+    max-width: 100%; /* Image can be as wide as its container, no more */
+    height: auto; /* Maintain aspect ratio */
+    margin: auto; /* Center the image within the .tile */
+  }
+
+  .info { 
+     text-align: center;
+     font-size:20px;
+   }
+    .info h2{ 
+     font-size:20px;
+       font-weight:900;
+   }
+.slider-mask {
+  overflow: hidden;
+  width: 100%; /* Make sure this takes up the full width of its parent */
+}
+.header-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Remove the border-bottom style if it's no longer needed */
+}
+   .header-container.first-header{
+      margin-top:5px;
+   }
+.header-container-headline {
+  margin-left: 60px;
+  /* Ensure there's space for the line below */
+  position: relative;
+  z-index: 2; /* Make sure the text is above the line */
+  font-weight:bold;
+}
+
+.more-link {
+  margin-right: 40px; 
+  color: black; 
+  padding: 10px 20px;
+  text-decoration: underline;
+  font-weight: bold; 
+  z-index: 2; /* Make sure the text is above the line */
+  /* Ensure there's space for the line below */
+  position: relative;
+}
+
+.header-line {
+  position: absolute;
+  left: 60px; 
+  right: 60px; 
+   top:35px;
+  bottom: 0; 
+  border-bottom: 1px solid gray; 
+  z-index: 1; 
+}
+
+.arrow {
+  width: 50px; /* Width of the arrow */
+  height: 100%; /* Make arrow span full height of the slider */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* This will vertically center the arrow ">" "<" signs */
+  position: absolute; /* Positioning relative to its container */
+  top: 0; /* Start at the top of the slider */
+  cursor: pointer;
+  z-index: 3; /* Above other content */
+}
+
+/* Remove the border-radius if you don't want the arrows to be circles anymore */
+.arrow.left {
+  left: 20px; /* Align to the left edge */
+}
+
+.arrow.right {
+  right: 0; /* Align to the right edge */
+}
+
+.arrow::before {
+  content: '';
+  border: solid black;
+  border-width: 0 5px 5px 0; /* Adjust the size of the arrow */
+  display: inline-block;
+  padding: 10px; /* Adjust the size of the arrow */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.arrow.left::before {
+  transform: rotate(135deg); /* Rotate arrow to point left */
+}
+
+.arrow.right::before {
+  transform: rotate(-45deg); /* Rotate arrow to point right */
+}
+
+/* Enlarge arrow on hover and change color */
+.arrow:hover::before {
+  border-color: #555;
+  padding: 12px; /* Slightly larger arrow on hover */
+}
+
+/* Ensure the arrow is centered in the middle of the height */
+.arrow::before {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%) rotate(135deg);
+}
+
+.arrow.right::before {
+  transform: translate(0, -50%) rotate(-45deg);
+}
+   
+.grabbing {
+  cursor: grabbing;
+}
+  }
+ /* Mobile Styles */
+@media screen and (max-width: 480px) {
+  .tile {
+    width: 50%; /* Each tile takes half the width, so 2 tiles are fully visible */
+  }
+   .tile img{
+     min-height:100px;
+         max-height:100px;
+           padding:3px;
+   }
+      .slider-container.first-slider {
+  margin-top: 10px;
+}
+  .slider-mask {
+    padding-right: 15%; /* Adjust this value to reveal part of the next tile */
+    box-sizing: content-box; /* To ensure padding is added to the total width */
+  }
+      .slider-container {
+  margin-bottom: 20px;
+}
+
+  .header-container-headline {
+   margin-left:15px;
+     font-size:25px;
+  }
+    .arrow {
+    display: none; /* Hide arrows on mobile */
+  }
+     .more-link {
+    margin-right: 0px; 
+        font-size:12px;
+  }
+      .header-line {
+  left: 15px; /* Align with the left edge of the container */
+  right: 20px; /* Align with the right edge of the container */
+         top:30px;
+	}
+ .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* This will space out the name and price */
+    min-height: 80px; /* Set a minimum height */
+    font-size:14px;
+  }
+   .info p, .info h2 {
+    margin: 5px 0; /* This will ensure there is some space around the text */
+  }
+   .info h2{
+    font-size:14px;
+   }
+}
+
+/* Tablet Styles */
+@media screen and (max-width: 768px) {
+  .tile {
+     padding:3px;
+    width: calc(50% - 20px); /* Adjust the width to fit 2 tiles and part of the third one, consider margins if any */
+  }
+      .tile img{
+      min-height:100px;
+         max-height:100px;
+   }
+   .slider-container.first-slider {
+  margin-top: 10px;
+}
+
+  .slider-mask {
+    padding-right: 15%; /* Adjust this value to reveal part of the next tile */
+    box-sizing: content-box; /* To ensure padding is added to the total width */
+  }
+      .slider-container {
+  margin-bottom: 20px;
+}
+   .header-container-headline {
+   margin-left:15px;
+   font-size:25px;
+  }
+    .arrow {
+    display: none; /* Hide arrows on mobile */
+  }
+   .more-link {
+    margin-right: 0px; 
+    font-size:12px;
+  }
+   .header-line {
+  left: 15px; /* Align with the left edge of the container */
+  right: 20px; /* Align with the right edge of the container */
+       top:30px;
+      margin-bottom:5px;
+	}
+   .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* This will space out the name and price */
+    min-height: 80px; /* Set a minimum height */
+    font-size:12px;
+  }
+   .info p, .info h2 {
+    margin: 5px 0; /* This will ensure there is some space around the text */
+  }
+     .info h2{
+    font-size:14px
+   }
+}
+
+  /* Desktop Styles */
+  @media screen and (min-width: 1200px) {
+    .tile {
+      width: 25%; /* Four tiles per row on desktop */
+    }
+  .tile img {
+    min-height:200px;
+     max-height:200px;
+  }
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out the name and price */
+  height: 70px; /* Set a fixed height to ensure consistency */
+}
+.info p {
+  margin: 0 0 5px 0; /* Provide some spacing at the bottom if the text wraps */
+}
+
+.info h2 {
+  margin: 0; /* Remove margin from the price */
+}
+  }
+   /* Desktop Styles */
+  @media screen and (min-width: 1600px) {
+    .tile {
+      width: 25%; /* Four tiles per row on desktop */
+    }
+  .tile img {
+    min-height:260px;
+     max-height:260px;
+     }
+   }
